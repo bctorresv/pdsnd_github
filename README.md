@@ -12,3 +12,6 @@ chicago.csv, new_york_city.csv, washington.csv
 
 ### Credits
 StackOverflow community and python community and github user joelromanpr
+
+### Notes
+Files used to run the bikeshare program are omitted from this project per requrements.
