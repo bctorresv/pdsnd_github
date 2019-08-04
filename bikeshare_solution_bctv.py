@@ -13,6 +13,7 @@ A function to compute statistics about rent and return was added
 Data must be in same folder than the script
 """
 
+#Holds dictionary of files supported
 CITY_DATA = { '1': 'chicago.csv',
               '2': 'new_york_city.csv',
               '3': 'washington.csv' }
