@@ -17,7 +17,7 @@ Data must be in same folder than the script
 CITY_DATA = { '1': 'chicago.csv',
               '2': 'new_york_city.csv',
               '3': 'washington.csv' }
-
+#Holds dictionary of months supported
 MONTHS = { 'All':'all', 'January':'January', 'February':'February', 'March': 'March',
           'April': 'April', 'May': 'May', 'June': 'June', 'July': 'July', 'August': 'August',
           'September': 'September','October': 'October','November': 'November','December': 'December'}
