@@ -97,6 +97,19 @@ def load_data(city, month='all', day='all'):
     return df_raw
 
 def display_raw_data(df):
+       """
+        Shows data filtered by the city, month and day selected by the user - if applicable.
+        Data will be displayed in chunks of 5 lines, as many times as the user requested
+        If user answer to the question of showing raw data with "now", then it will skip to
+        present the statistics
+
+        Args:
+            input: yes or no
+        Returns:
+            df - Pandas DataFrame containing city data filtered by month and day, 5 lines at the time
+        """
+    # setting initial values for the loop that will display the data
+    # change the end value if you want to display a different number of rows at the time 
     initial = 0
     end = 5
     answer = input('\nData is ready to be used, would you like to see some of it?. Enter yes or no.\n')
