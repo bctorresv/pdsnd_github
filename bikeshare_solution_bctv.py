@@ -86,6 +86,7 @@ def load_data(city, month='all', day='all'):
     df_raw['Month Start Time'] = df_raw['Start Time'].dt.month_name(locale = 'English')
     df_raw['Day Start Time'] = df_raw['Start Time'].dt.weekday_name
     df_raw['Hour Start Time'] = df_raw['Start Time'].dt.hour
+    df_raw['Hour End Time'] = df_raw['End Time'].dt.hour
 
     # filtering
     if month != 'all':
@@ -97,19 +98,19 @@ def load_data(city, month='all', day='all'):
     return df_raw
 
 def display_raw_data(df):
-       """
-        Shows data filtered by the city, month and day selected by the user - if applicable.
-        Data will be displayed in chunks of 5 lines, as many times as the user requested
-        If user answer to the question of showing raw data with "now", then it will skip to
-        present the statistics
+    """
+    Shows data filtered by the city, month and day selected by the user - if applicable.
+    Data will be displayed in chunks of 5 lines, as many times as the user requested
+    If user answer to the question of showing raw data with "now", then it will skip to
+    present the statistics
 
-        Args:
-            input: yes or no
-        Returns:
-            df - Pandas DataFrame containing city data filtered by month and day, 5 lines at the time
-        """
+    Args:
+        input: yes or no
+    Returns:
+        df - Pandas DataFrame containing city data filtered by month and day, 5 lines at the time
+    """
     # setting initial values for the loop that will display the data
-    # change the end value if you want to display a different number of rows at the time 
+    # change the end value if you want to display a different number of rows at the time
     initial = 0
     end = 5
     answer = input('\nData is ready to be used, would you like to see some of it?. Enter yes or no.\n')
@@ -136,13 +137,21 @@ def time_stats(df):
         if df['Day Start Time'].dtype != 'bool':
             print('\nThe most popular day in the week to rent bikes is:\n', df['Day Start Time'].value_counts().idxmax())
 
-    # display the most common start hour
+    # display the most common hour to rent bikes
     if df['Hour Start Time'].value_counts().idxmax() < 12:
         time_day = 'am'
     else:
         time_day = 'hrs'
 
     print('\nThe most popular hour to rent bikes is:\n', df['Hour Start Time'].value_counts().idxmax(),time_day)
+
+    # display the most common hour to return bikes
+    if df['Hour End Time'].value_counts().idxmax() < 12:
+        time_day = 'am'
+    else:
+        time_day = 'hrs'
+
+    print('\nThe most popular hour to return bikes is:\n', df['Hour End Time'].value_counts().idxmax(),time_day)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
