@@ -47,7 +47,7 @@ def get_filters():
     # get user input for month (all, january, february, ... , june)
     invalidInput = True
     while(invalidInput):
-        month = input("Enter month: all, January, February, ... , June: ")
+        month = input("Enter month: all for all the months or January, February, ... , June: ")
         if month.capitalize() in MONTHS.keys():
             invalidInput = False
         else:
